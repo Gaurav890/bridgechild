@@ -74,10 +74,10 @@ const LandingPage = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center py-4">
             <div className="flex items-center">
-              <div className="bg-gradient-primary w-10 h-10 rounded-xl flex items-center justify-center">
-                <HeartIcon className="h-6 w-6 text-white" />
+              <div className="bg-gradient-primary w-8 h-8 rounded-lg flex items-center justify-center">
+                <HeartIcon className="h-5 w-5 text-white" />
               </div>
-              <span className="ml-3 text-xl font-display font-bold text-neutral-dark">
+              <span className="ml-2 text-base font-display font-bold text-neutral-dark">
                 Helping Hands
               </span>
             </div>
@@ -100,69 +100,92 @@ const LandingPage = () => {
       </nav>
 
       {/* Hero Section */}
-      <section className="relative bg-gradient-hero overflow-hidden">
-        {/* Decorative elements */}
-        <div className="absolute inset-0">
-          <div className="absolute top-0 right-0 -mt-16 -mr-16 w-96 h-96 bg-white bg-opacity-5 rounded-full transform rotate-12"></div>
-          <div className="absolute bottom-0 left-0 -mb-32 -ml-32 w-80 h-80 bg-white bg-opacity-10 rounded-full"></div>
-        </div>
-
-        <div className="relative max-w-7xl mx-auto px-4 py-24 sm:px-6 lg:px-8 lg:py-32">
-          <div className="lg:grid lg:grid-cols-2 lg:gap-12 items-center">
-            {/* Hero Content */}
-            <div className="fade-in">
-              <h1 className="text-4xl lg:text-6xl xl:text-7xl font-display font-bold text-white mb-6 leading-tight">
-                Transform Lives,
-                <span className="text-primary-200 block">
-                  One Child at a Time
-                </span>
-              </h1>
-              <p className="text-xl text-primary-100 mb-8 leading-relaxed max-w-2xl">
-                Join our global community of caring individuals making a lasting impact through safe,
-                verified child sponsorship programs worldwide.
-              </p>
-              <div className="flex flex-col sm:flex-row gap-4">
-                <Link
-                  to="/register"
-                  className="btn btn-lg bg-white text-primary font-semibold hover:bg-neutral-100 shadow-xl transform hover:scale-105 transition-all duration-300"
-                >
-                  Start Sponsoring Today
-                  <ArrowRightIcon className="ml-2 h-5 w-5" />
-                </Link>
-                <button className="btn btn-lg btn-outline border-white text-white hover:bg-white hover:text-primary flex items-center justify-center">
-                  <PlayIcon className="h-5 w-5 mr-2" />
-                  Watch Our Story
-                </button>
-              </div>
+      <section className="relative overflow-hidden min-h-screen flex items-center bg-gradient-to-br from-primary-600 to-primary-800">
+        <div style={{position: 'relative', maxWidth: '1280px', margin: '0 auto', padding: '80px 16px', width: '100%'}}>
+          <div style={{textAlign: 'center'}}>
+            {/* Trust Badge */}
+            <div style={{
+              display: 'inline-flex',
+              alignItems: 'center',
+              padding: '8px 16px',
+              backgroundColor: 'rgba(255, 255, 255, 0.1)',
+              borderRadius: '9999px',
+              color: 'white',
+              fontWeight: '500',
+              fontSize: '14px',
+              marginBottom: '32px',
+              border: '1px solid rgba(255, 255, 255, 0.2)'
+            }}>
+              <HeartIcon style={{height: '16px', width: '16px', marginRight: '8px'}} />
+              Trusted by 2,847+ sponsors worldwide
             </div>
 
-            {/* Hero Image/Illustration */}
-            <div className="mt-12 lg:mt-0 slide-up">
-              <div className="relative">
-                {/* Floating cards */}
-                <div className="absolute -top-4 -right-4 bg-white rounded-2xl p-4 shadow-xl transform rotate-3 hover:rotate-6 transition-transform duration-300">
-                  <div className="flex items-center space-x-2">
-                    <HeartIcon className="h-6 w-6 text-accent-500" />
-                    <span className="text-sm font-semibold text-neutral-800">2,847 Lives Changed</span>
-                  </div>
-                </div>
-                <div className="absolute -bottom-6 -left-4 bg-white rounded-2xl p-4 shadow-xl transform -rotate-3 hover:-rotate-6 transition-transform duration-300">
-                  <div className="flex items-center space-x-2">
-                    <GlobeIcon className="h-6 w-6 text-secondary-500" />
-                    <span className="text-sm font-semibold text-neutral-800">34 Countries</span>
-                  </div>
-                </div>
+            {/* Main Title */}
+            <h1 style={{
+              fontSize: '48px',
+              fontWeight: 'bold',
+              color: 'white',
+              marginBottom: '32px',
+              lineHeight: '1.2',
+              maxWidth: '800px',
+              margin: '0 auto 32px auto'
+            }}>
+              Transform Lives,
+              <span style={{display: 'block', color: '#fed7aa'}}>
+                One Child at a Time
+              </span>
+            </h1>
 
-                {/* Main hero visual */}
-                <div className="bg-white bg-opacity-10 rounded-3xl p-8 backdrop-blur">
-                  <div className="grid grid-cols-2 gap-4">
-                    <div className="bg-primary-400 h-32 rounded-2xl opacity-80"></div>
-                    <div className="bg-secondary-400 h-32 rounded-2xl opacity-80"></div>
-                    <div className="bg-accent-400 h-32 rounded-2xl opacity-80"></div>
-                    <div className="bg-primary-300 h-32 rounded-2xl opacity-80"></div>
-                  </div>
-                </div>
-              </div>
+            {/* Description */}
+            <p style={{
+              fontSize: '20px',
+              color: '#fed7aa',
+              marginBottom: '48px',
+              lineHeight: '1.6',
+              maxWidth: '600px',
+              margin: '0 auto 48px auto'
+            }}>
+              Join our global community of caring individuals making a lasting impact through safe,
+              verified child sponsorship programs worldwide.
+            </p>
+
+            {/* CTA Buttons */}
+            <div style={{display: 'flex', flexDirection: 'column', gap: '16px', justifyContent: 'center', alignItems: 'center'}}>
+              <Link
+                to="/register"
+                style={{
+                  display: 'inline-flex',
+                  alignItems: 'center',
+                  padding: '16px 32px',
+                  backgroundColor: 'white',
+                  color: '#ea580c',
+                  fontWeight: '600',
+                  borderRadius: '8px',
+                  textDecoration: 'none',
+                  fontSize: '18px',
+                  boxShadow: '0 10px 15px -3px rgba(0, 0, 0, 0.1)',
+                  transition: 'all 0.3s ease'
+                }}
+              >
+                Start Sponsoring Today
+                <ArrowRightIcon style={{marginLeft: '8px', height: '20px', width: '20px'}} />
+              </Link>
+              <button style={{
+                display: 'inline-flex',
+                alignItems: 'center',
+                padding: '16px 32px',
+                border: '2px solid white',
+                backgroundColor: 'transparent',
+                color: 'white',
+                fontWeight: '600',
+                borderRadius: '8px',
+                fontSize: '18px',
+                cursor: 'pointer',
+                transition: 'all 0.3s ease'
+              }}>
+                <PlayIcon style={{height: '20px', width: '20px', marginRight: '8px'}} />
+                Watch Our Story
+              </button>
             </div>
           </div>
         </div>
@@ -221,24 +244,24 @@ const LandingPage = () => {
             {features.map((feature, index) => (
               <div
                 key={feature.name}
-                className={`card p-8 group cursor-pointer fade-in`}
+                className={`card p-8 group cursor-pointer fade-in hover:shadow-xl transition-all duration-300`}
                 style={{ animationDelay: `${index * 0.15}s` }}
               >
-                <div className="flex items-start space-x-4">
-                  <div className={`${feature.color} w-14 h-14 rounded-xl flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform duration-300`}>
-                    <feature.icon className="h-7 w-7 text-white" />
+                <div className="flex items-start space-x-6">
+                  <div className={`${feature.color} w-12 h-12 rounded-lg flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform duration-300`}>
+                    <feature.icon className="h-6 w-6 text-white" />
                   </div>
                   <div>
                     <h3 className="text-xl font-display font-semibold text-neutral-dark mb-3">
                       {feature.name}
                     </h3>
-                    <p className="text-neutral leading-relaxed">
+                    <p className="text-neutral text-sm leading-relaxed">
                       {feature.description}
                     </p>
                   </div>
                 </div>
               </div>
-            ))}
+            ))})
           </div>
         </div>
       </section>
@@ -259,25 +282,25 @@ const LandingPage = () => {
             {testimonials.map((testimonial, index) => (
               <div
                 key={index}
-                className={`card p-8 fade-in`}
+                className={`card p-8 fade-in hover:shadow-xl transition-all duration-300`}
                 style={{ animationDelay: `${index * 0.2}s` }}
               >
                 <div className="flex items-center mb-4">
                   {[...Array(testimonial.rating)].map((_, i) => (
-                    <StarIcon key={i} className="h-5 w-5 text-primary fill-current" />
+                    <StarIcon key={i} className="h-4 w-4 text-primary fill-current" />
                   ))}
                 </div>
-                <blockquote className="text-neutral-dark mb-6 leading-relaxed italic">
+                <blockquote className="text-neutral-dark mb-6 text-base leading-relaxed italic">
                   "{testimonial.content}"
                 </blockquote>
                 <div className="flex items-center">
-                  <div className="bg-gradient-primary w-12 h-12 rounded-full flex items-center justify-center">
+                  <div className="bg-gradient-primary w-10 h-10 rounded-full flex items-center justify-center">
                     <span className="text-white font-semibold text-sm">
                       {testimonial.name.split(' ').map(n => n[0]).join('')}
                     </span>
                   </div>
-                  <div className="ml-4">
-                    <div className="text-neutral-dark font-semibold">{testimonial.name}</div>
+                  <div className="ml-3">
+                    <div className="text-neutral-dark font-medium text-sm">{testimonial.name}</div>
                     <div className="text-neutral text-sm">{testimonial.role}</div>
                   </div>
                 </div>

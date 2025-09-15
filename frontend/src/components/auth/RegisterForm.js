@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { EyeIcon, EyeOffIcon } from '@heroicons/react/outline';
+import { EyeIcon, EyeOffIcon, HeartIcon } from '@heroicons/react/outline';
 import { useAuth } from '../../contexts/AuthContext';
 import { useForm } from '../../hooks/useForm';
 import {
@@ -66,15 +66,18 @@ const RegisterForm = ({ onSuccess }) => {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-secondary-50 py-12 px-4 sm:px-6 lg:px-8">
+    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-primary-50 via-secondary-50 to-neutral-50 py-12 px-4 sm:px-6 lg:px-8">
       <div className="max-w-lg w-full">
-        <div className="card p-8">
+        <div className="card-elevated p-10 backdrop-blur-xl">
           <div className="text-center mb-8">
-            <h2 className="text-3xl font-bold text-secondary-900 mb-2">
-              Create your account
-            </h2>
-            <p className="text-secondary-600">
-              Join the Helping Hands community
+            <div className="bg-gradient-primary w-10 h-10 rounded-lg flex items-center justify-center mx-auto mb-4 shadow-lg">
+              <HeartIcon className="h-5 w-5 text-white" />
+            </div>
+            <h1 className="text-2xl font-display font-bold bg-gradient-to-r from-primary-600 to-secondary-600 bg-clip-text text-transparent mb-2">
+              Join the Community
+            </h1>
+            <p className="text-sm text-neutral-600 font-medium">
+              Start your journey of making a difference
             </p>
           </div>
 
@@ -202,9 +205,9 @@ const RegisterForm = ({ onSuccess }) => {
                   onClick={() => setShowPassword(!showPassword)}
                 >
                   {showPassword ? (
-                    <EyeOffIcon className="h-5 w-5 text-secondary-400" />
+                    <EyeOffIcon className="h-4 w-4 text-secondary-400 hover:text-secondary-600" />
                   ) : (
-                    <EyeIcon className="h-5 w-5 text-secondary-400" />
+                    <EyeIcon className="h-4 w-4 text-secondary-400 hover:text-secondary-600" />
                   )}
                 </button>
                 {errors.password && (
@@ -234,9 +237,9 @@ const RegisterForm = ({ onSuccess }) => {
                   onClick={() => setShowConfirmPassword(!showConfirmPassword)}
                 >
                   {showConfirmPassword ? (
-                    <EyeOffIcon className="h-5 w-5 text-secondary-400" />
+                    <EyeOffIcon className="h-4 w-4 text-secondary-400 hover:text-secondary-600" />
                   ) : (
-                    <EyeIcon className="h-5 w-5 text-secondary-400" />
+                    <EyeIcon className="h-4 w-4 text-secondary-400 hover:text-secondary-600" />
                   )}
                 </button>
                 {errors.confirmPassword && (
@@ -275,14 +278,21 @@ const RegisterForm = ({ onSuccess }) => {
               <button
                 type="submit"
                 disabled={isSubmitting || isLoading}
-                className="btn-primary w-full py-3 text-base"
+                className="btn btn-primary w-full py-3 text-sm font-semibold shadow-lg transform hover:scale-[1.02] transition-all duration-300"
               >
-                {isSubmitting || isLoading ? 'Creating account...' : 'Create account'}
+                {isSubmitting || isLoading ? (
+                  <div className="flex items-center justify-center">
+                    <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-white mr-2"></div>
+                    Creating account...
+                  </div>
+                ) : (
+                  'Create Your Account'
+                )}
               </button>
             </div>
 
             <div className="text-center">
-              <span className="text-sm text-secondary-600">
+              <span className="text-xs text-secondary-600">
                 Already have an account?{' '}
                 <Link
                   to="/login"
