@@ -1,40 +1,43 @@
 import React from 'react';
 import {
-  UserGroupIcon,
-  HeartIcon,
-  CurrencyDollarIcon,
-  ChartBarIcon,
-} from '@heroicons/react/outline';
+  FaUsers,
+  FaHeart,
+  FaDollarSign,
+  FaChartBar,
+  FaChild,
+  FaHandHoldingHeart,
+  FaGift
+} from 'react-icons/fa';
 import DashboardLayout from '../components/layouts/DashboardLayout';
 
 const SponsorDashboard = () => {
   const navigation = [
-    { name: 'Dashboard', href: '/sponsor/dashboard', icon: ChartBarIcon, current: true },
-    { name: 'My Sponsored Children', href: '/sponsor/children', icon: UserGroupIcon, current: false },
-    { name: 'Find Children', href: '/sponsor/find-children', icon: HeartIcon, current: false },
-    { name: 'Donations', href: '/sponsor/donations', icon: CurrencyDollarIcon, current: false },
+    { name: 'Dashboard', href: '/sponsor/dashboard', icon: FaChartBar, current: true },
+    { name: 'My Sponsored Children', href: '/sponsor/children', icon: FaUsers, current: false },
+    { name: 'Find Children', href: '/sponsor/find-children', icon: FaHeart, current: false },
+    { name: 'Donations', href: '/sponsor/donations', icon: FaDollarSign, current: false },
   ];
 
   const stats = [
-    { name: 'Children Sponsored', value: '0', icon: UserGroupIcon, color: 'bg-blue-500' },
-    { name: 'Total Donations', value: '$0', icon: CurrencyDollarIcon, color: 'bg-green-500' },
-    { name: 'Monthly Impact', value: '0', icon: HeartIcon, color: 'bg-purple-500' },
+    { name: 'Children Sponsored', value: '0', icon: FaChild, color: 'from-orange-400 to-orange-600' },
+    { name: 'Total Donations', value: '$0', icon: FaGift, color: 'from-teal-400 to-teal-600' },
+    { name: 'Monthly Impact', value: '0', icon: FaHandHoldingHeart, color: 'from-purple-400 to-purple-600' },
   ];
 
   return (
     <DashboardLayout navigation={navigation}>
       <div className="space-y-8">
-        <div className="bg-gradient-to-r from-primary-50 to-secondary-50 rounded-lg p-4 border border-primary-100">
-          <div className="flex items-center space-x-3">
-            <div className="bg-gradient-primary w-8 h-8 rounded-lg flex items-center justify-center shadow-md">
-              <HeartIcon className="h-4 w-4 text-white" />
+        <div className="bg-gradient-to-r from-orange-50 to-teal-50 rounded-xl p-6 border border-orange-100 shadow-lg">
+          <div className="flex items-center space-x-4">
+            <div className="bg-gradient-to-br from-orange-500 to-orange-600 w-12 h-12 rounded-xl flex items-center justify-center shadow-lg">
+              <FaHeart className="h-6 w-6 text-white" />
             </div>
             <div>
-              <h1 className="text-lg font-display font-bold bg-gradient-to-r from-primary-600 to-secondary-600 bg-clip-text text-transparent">
+              <h1 className="text-2xl font-display font-bold bg-gradient-to-r from-orange-600 to-teal-600 bg-clip-text text-transparent">
                 Welcome Back, Sponsor!
               </h1>
-              <p className="text-xs text-neutral-600 font-medium">
-                Continue making a difference in children's lives
+              <p className="text-sm text-gray-600 font-medium">
+                Continue making a difference in children's lives around the world
               </p>
             </div>
           </div>
@@ -48,15 +51,15 @@ const SponsorDashboard = () => {
               style={{ animationDelay: `${index * 0.1}s` }}
             >
               <div className="flex items-center justify-between mb-3">
-                <div className="bg-gradient-to-br from-primary-500 to-secondary-500 rounded-lg p-2 group-hover:scale-110 transition-transform duration-300 shadow-md">
-                  <stat.icon className="h-4 w-4 text-white" aria-hidden="true" />
+                <div className={`bg-gradient-to-br ${stat.color} rounded-xl p-3 group-hover:scale-110 transition-transform duration-300 shadow-lg`}>
+                  <stat.icon className="h-5 w-5 text-white" aria-hidden="true" />
                 </div>
                 <div className="text-right">
-                  <div className="text-lg font-display font-bold text-neutral-800 mb-1">{stat.value}</div>
-                  <div className="text-xs font-semibold text-primary-600 uppercase tracking-wide">{stat.name}</div>
+                  <div className="text-2xl font-display font-bold text-gray-800 mb-1">{stat.value}</div>
+                  <div className="text-xs font-semibold text-orange-600 uppercase tracking-wide">{stat.name}</div>
                 </div>
               </div>
-              <div className="h-2 bg-gradient-to-r from-primary-200 to-secondary-200 rounded-full"></div>
+              <div className="h-2 bg-gradient-to-r from-orange-200 to-teal-200 rounded-full mt-2"></div>
             </div>
           ))}
         </div>

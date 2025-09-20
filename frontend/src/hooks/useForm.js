@@ -72,10 +72,23 @@ export const useForm = (initialValues, validationRules = {}) => {
     setIsSubmitting(false);
   }, [initialValues]);
 
+  // Check if form is valid (no errors and all required fields filled)
+  const isValid = useCallback(() => {
+    const hasErrors = Object.values(errors).some(error => error !== '');
+    const requiredFields = Object.keys(validationRules);
+    const hasEmptyRequiredFields = requiredFields.some(field => {
+      const value = values[field];
+      return !value || (typeof value === 'string' && !value.trim()) || (typeof value === 'boolean' && !value);
+    });
+
+    return !hasErrors && !hasEmptyRequiredFields;
+  }, [errors, values, validationRules]);
+
   return {
     values,
     errors,
     isSubmitting,
+    isValid: isValid(),
     handleChange,
     handleBlur,
     handleSubmit,

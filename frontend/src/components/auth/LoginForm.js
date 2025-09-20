@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { EyeIcon, EyeOffIcon, HeartIcon } from '@heroicons/react/outline';
+import { FaEye, FaEyeSlash, FaUser, FaEnvelope, FaLock, FaExclamationTriangle, FaHeart } from 'react-icons/fa';
 import { useAuth } from '../../contexts/AuthContext';
 import { useForm } from '../../hooks/useForm';
 import { required, email } from '../../utils/validation';
@@ -13,6 +13,7 @@ const LoginForm = ({ onSuccess }) => {
     values,
     errors,
     isSubmitting,
+    isValid,
     handleChange,
     handleBlur,
     handleSubmit,
@@ -32,39 +33,49 @@ const LoginForm = ({ onSuccess }) => {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-primary-50 via-secondary-50 to-neutral-50 py-12 px-4 sm:px-6 lg:px-8">
-      <div className="max-w-md w-full">
-        <div className="card-elevated p-10 backdrop-blur-xl">
-          <div className="text-center mb-8">
-            <div className="bg-gradient-primary w-10 h-10 rounded-lg flex items-center justify-center mx-auto mb-4 shadow-lg">
-              <HeartIcon className="h-5 w-5 text-white" />
-            </div>
-            <h1 className="text-2xl font-display font-bold bg-gradient-to-r from-primary-600 to-secondary-600 bg-clip-text text-transparent mb-2">
-              Welcome Back
-            </h1>
-            <p className="text-sm text-neutral-600 font-medium">
-              Sign in to continue making a difference
-            </p>
+    <div className="min-h-screen bg-gradient-to-br from-orange-50 to-teal-50 flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8 relative">
+      {/* Background Pattern */}
+      <div className="absolute inset-0 bg-white opacity-40"></div>
+      <div className="max-w-md w-full space-y-8 relative z-10">
+        {/* Header */}
+        <div className="text-center">
+          <div className="mx-auto h-16 w-16 bg-gradient-to-br from-orange-500 to-orange-600 rounded-full flex items-center justify-center mb-6 shadow-xl ring-4 ring-orange-100">
+            <FaHeart className="h-8 w-8 text-white drop-shadow-sm" />
           </div>
+          <h2 className="text-3xl font-bold text-gray-900">Welcome Back</h2>
+          <p className="mt-2 text-sm text-gray-600">
+            Sign in to continue your journey of making a difference
+          </p>
+        </div>
 
-          <form
-            className="space-y-6"
-            onSubmit={(e) => {
-              e.preventDefault();
-              handleSubmit(onSubmit);
-            }}
-          >
+        {/* Form */}
+        <div className="bg-white shadow-2xl rounded-2xl p-8 border border-gray-100">
+          <form className="space-y-6" onSubmit={(e) => {
+            e.preventDefault();
+            handleSubmit(onSubmit);
+          }}>
+
+            {/* Error Message */}
             {error && (
-              <div className="rounded-md bg-error-50 border border-error-200 p-4">
-                <div className="text-sm text-error-700">{error}</div>
+              <div className="bg-red-50 border border-red-200 rounded-md p-4">
+                <div className="flex">
+                  <FaExclamationTriangle className="h-4 w-4 text-red-400 mt-0.5" />
+                  <div className="ml-3">
+                    <p className="text-sm text-red-700">{error}</p>
+                  </div>
+                </div>
               </div>
             )}
 
-            <div className="space-y-4">
-              <div>
-                <label htmlFor="email" className="block text-sm font-medium text-secondary-700 mb-1">
-                  Email address
-                </label>
+            {/* Email Field */}
+            <div>
+              <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-2">
+                Email address
+              </label>
+              <div className="relative">
+                <div className="absolute inset-y-0 left-3 pl-3 flex items-center pointer-events-none">
+                  <FaEnvelope className="h-4 w-4 text-gray-400" />
+                </div>
                 <input
                   id="email"
                   name="email"
@@ -74,18 +85,26 @@ const LoginForm = ({ onSuccess }) => {
                   value={values.email}
                   onChange={handleChange}
                   onBlur={handleBlur}
-                  className={errors.email ? 'input-error' : 'input'}
+                  className={`appearance-none block w-full pl-10 pr-3 py-3 border-2 rounded-xl bg-white placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-orange-500 transition-all duration-200 ${
+                    errors.email ? 'border-red-300 bg-red-50' : 'border-gray-200 hover:border-gray-300'
+                  }`}
                   placeholder="Enter your email"
                 />
-                {errors.email && (
-                  <p className="mt-1 text-sm text-error-600">{errors.email}</p>
-                )}
               </div>
+              {errors.email && (
+                <p className="mt-2 text-sm text-red-600">{errors.email}</p>
+              )}
+            </div>
 
+            {/* Password Field */}
+            <div>
+              <label htmlFor="password" className="block text-sm font-medium text-gray-700 mb-2">
+                Password
+              </label>
               <div className="relative">
-                <label htmlFor="password" className="block text-sm font-medium text-secondary-700 mb-1">
-                  Password
-                </label>
+                <div className="absolute inset-y-0 left-3 pl-3 flex items-center pointer-events-none">
+                  <FaLock className="h-4 w-4 text-gray-400" />
+                </div>
                 <input
                   id="password"
                   name="password"
@@ -95,62 +114,69 @@ const LoginForm = ({ onSuccess }) => {
                   value={values.password}
                   onChange={handleChange}
                   onBlur={handleBlur}
-                  className={`${errors.password ? 'input-error' : 'input'} pr-10`}
+                  className={`appearance-none block w-full pl-10 pr-12 py-3 border-2 rounded-xl bg-white placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-orange-500 transition-all duration-200 ${
+                    errors.password ? 'border-red-300 bg-red-50' : 'border-gray-200 hover:border-gray-300'
+                  }`}
                   placeholder="Enter your password"
                 />
                 <button
                   type="button"
-                  className="absolute inset-y-0 right-0 top-6 pr-3 flex items-center"
+                  className="absolute inset-y-0 right-3 pr-3 flex items-center"
                   onClick={() => setShowPassword(!showPassword)}
                 >
                   {showPassword ? (
-                    <EyeOffIcon className="h-4 w-4 text-secondary-400 hover:text-secondary-600" />
+                    <FaEyeSlash className="h-4 w-4 text-gray-400 hover:text-gray-600" />
                   ) : (
-                    <EyeIcon className="h-4 w-4 text-secondary-400 hover:text-secondary-600" />
+                    <FaEye className="h-4 w-4 text-gray-400 hover:text-gray-600" />
                   )}
                 </button>
-                {errors.password && (
-                  <p className="mt-1 text-sm text-error-600">{errors.password}</p>
-                )}
+              </div>
+              {errors.password && (
+                <p className="mt-2 text-sm text-red-600">{errors.password}</p>
+              )}
+            </div>
+
+            {/* Forgot Password */}
+            <div className="flex items-center justify-between">
+              <div className="text-sm">
+                <Link
+                  to="/forgot-password"
+                  className="font-medium text-orange-600 hover:text-orange-500 transition-colors"
+                >
+                  Forgot your password?
+                </Link>
               </div>
             </div>
 
-            <div className="flex items-center justify-between">
-              <Link
-                to="/forgot-password"
-                className="text-xs text-primary-600 hover:text-primary-500"
-              >
-                Forgot your password?
-              </Link>
-            </div>
-
+            {/* Submit Button */}
             <div>
               <button
                 type="submit"
-                disabled={isSubmitting || isLoading}
-                className="btn btn-primary w-full py-3 text-sm font-semibold shadow-lg transform hover:scale-[1.02] transition-all duration-300"
+                disabled={!isValid || isSubmitting || isLoading}
+                className="group relative w-full flex justify-center py-3 px-4 border border-transparent text-sm font-medium rounded-xl text-white bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-orange-500 disabled:opacity-50 disabled:cursor-not-allowed shadow-lg hover:shadow-xl transition-all duration-200 transform hover:scale-[1.02]"
               >
                 {isSubmitting || isLoading ? (
-                  <div className="flex items-center justify-center">
-                    <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-white mr-2"></div>
+                  <div className="flex items-center">
+                    <div className="animate-spin -ml-1 mr-3 h-4 w-4 border-2 border-white border-t-transparent rounded-full"></div>
                     Signing in...
                   </div>
                 ) : (
-                  'Sign In to Continue'
+                  'Sign in'
                 )}
               </button>
             </div>
 
+            {/* Sign Up Link */}
             <div className="text-center">
-              <span className="text-xs text-secondary-600">
+              <p className="text-sm text-gray-600">
                 Don't have an account?{' '}
                 <Link
                   to="/register"
-                  className="font-medium text-primary-600 hover:text-primary-500"
+                  className="font-medium text-orange-600 hover:text-orange-500 transition-colors"
                 >
-                  Sign up here
+                  Sign up
                 </Link>
-              </span>
+              </p>
             </div>
           </form>
         </div>

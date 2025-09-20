@@ -1,40 +1,43 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import {
-  HeartIcon,
-  UserGroupIcon,
-  ShieldCheckIcon,
-  GlobeIcon,
-  ArrowRightIcon,
-  StarIcon,
-  CheckCircleIcon,
-  PlayIcon,
-} from '@heroicons/react/outline';
+  FaHeart,
+  FaUsers,
+  FaShieldAlt,
+  FaGlobe,
+  FaArrowRight,
+  FaStar,
+  FaCheckCircle,
+  FaPlay,
+  FaFacebookF,
+  FaTwitter,
+  FaLinkedinIn
+} from 'react-icons/fa';
 
 const LandingPage = () => {
   const features = [
     {
       name: 'Safe & Secure',
       description: 'All interactions are moderated and verified through trusted NGO partners for maximum safety.',
-      icon: ShieldCheckIcon,
+      icon: FaShieldAlt,
       color: 'bg-secondary',
     },
     {
       name: 'Global Impact',
       description: 'Connect with children and NGOs worldwide to make a lasting difference across communities.',
-      icon: GlobeIcon,
+      icon: FaGlobe,
       color: 'bg-primary',
     },
     {
       name: 'Community Driven',
       description: 'Join a compassionate community of sponsors, children, and NGOs working together.',
-      icon: UserGroupIcon,
+      icon: FaUsers,
       color: 'bg-accent',
     },
     {
       name: 'Transparent Process',
       description: 'Track your impact with regular updates, photos, and detailed progress reports.',
-      icon: HeartIcon,
+      icon: FaHeart,
       color: 'bg-primary',
     },
   ];
@@ -75,7 +78,7 @@ const LandingPage = () => {
           <div className="flex justify-between items-center py-4">
             <div className="flex items-center">
               <div className="bg-gradient-primary w-8 h-8 rounded-lg flex items-center justify-center">
-                <HeartIcon className="h-5 w-5 text-white" />
+                <FaHeart className="h-5 w-5 text-white" />
               </div>
               <span className="ml-2 text-base font-display font-bold text-neutral-dark">
                 Helping Hands
@@ -100,8 +103,11 @@ const LandingPage = () => {
       </nav>
 
       {/* Hero Section */}
-      <section className="relative overflow-hidden min-h-screen flex items-center bg-gradient-to-br from-primary-600 to-primary-800">
-        <div style={{position: 'relative', maxWidth: '1280px', margin: '0 auto', padding: '80px 16px', width: '100%'}}>
+      <section className="relative overflow-hidden min-h-screen flex items-center bg-gradient-to-br from-orange-600 to-orange-800">
+        {/* Background Pattern */}
+        <div className="absolute inset-0 bg-black opacity-40"></div>
+        <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/5 to-transparent"></div>
+        <div style={{position: 'relative', maxWidth: '1280px', margin: '0 auto', padding: '80px 16px', width: '100%', zIndex: 10}}>
           <div style={{textAlign: 'center'}}>
             {/* Trust Badge */}
             <div style={{
@@ -116,7 +122,7 @@ const LandingPage = () => {
               marginBottom: '32px',
               border: '1px solid rgba(255, 255, 255, 0.2)'
             }}>
-              <HeartIcon style={{height: '16px', width: '16px', marginRight: '8px'}} />
+              <FaHeart style={{height: '16px', width: '16px', marginRight: '8px'}} />
               Trusted by 2,847+ sponsors worldwide
             </div>
 
@@ -168,7 +174,7 @@ const LandingPage = () => {
                 }}
               >
                 Start Sponsoring Today
-                <ArrowRightIcon style={{marginLeft: '8px', height: '20px', width: '20px'}} />
+                <FaArrowRight style={{marginLeft: '8px', height: '20px', width: '20px'}} />
               </Link>
               <button style={{
                 display: 'inline-flex',
@@ -183,7 +189,7 @@ const LandingPage = () => {
                 cursor: 'pointer',
                 transition: 'all 0.3s ease'
               }}>
-                <PlayIcon style={{height: '20px', width: '20px', marginRight: '8px'}} />
+                <FaPlay style={{height: '20px', width: '20px', marginRight: '8px'}} />
                 Watch Our Story
               </button>
             </div>
@@ -225,8 +231,9 @@ const LandingPage = () => {
       </section>
 
       {/* Features Section */}
-      <section className="bg-neutral py-24">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="bg-gradient-to-br from-gray-50 to-white py-24 relative">
+        <div className="absolute inset-0 bg-orange-50 opacity-30"></div>
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="text-center mb-16">
             <div className="inline-flex items-center px-4 py-2 bg-primary-light rounded-full text-primary font-semibold text-sm mb-4">
               Why Choose Helping Hands
@@ -287,7 +294,7 @@ const LandingPage = () => {
               >
                 <div className="flex items-center mb-4">
                   {[...Array(testimonial.rating)].map((_, i) => (
-                    <StarIcon key={i} className="h-4 w-4 text-primary fill-current" />
+                    <FaStar key={i} className="h-4 w-4 text-primary" />
                   ))}
                 </div>
                 <blockquote className="text-neutral-dark mb-6 text-base leading-relaxed italic">
@@ -311,13 +318,14 @@ const LandingPage = () => {
       </section>
 
       {/* How It Works Section */}
-      <section className="bg-gradient-primary py-24">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="bg-gradient-to-br from-teal-600 to-teal-800 py-24 relative">
+        <div className="absolute inset-0 bg-black opacity-20"></div>
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="text-center mb-16">
             <h2 className="text-3xl sm:text-4xl font-display font-bold text-white mb-6">
               How It Works
             </h2>
-            <p className="text-xl text-primary-100 max-w-3xl mx-auto">
+            <p className="text-xl text-teal-100 max-w-3xl mx-auto">
               Simple steps to start making a meaningful difference in a child's life
             </p>
           </div>
@@ -346,12 +354,12 @@ const LandingPage = () => {
                 style={{ animationDelay: `${index * 0.3}s` }}
               >
                 <div className="bg-white w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6 shadow-xl">
-                  <span className="text-2xl font-display font-bold text-primary">{step.step}</span>
+                  <span className="text-2xl font-display font-bold text-teal-600">{step.step}</span>
                 </div>
                 <h3 className="text-xl font-display font-semibold text-white mb-4">
                   {step.title}
                 </h3>
-                <p className="text-primary-100 leading-relaxed">
+                <p className="text-teal-100 leading-relaxed">
                   {step.description}
                 </p>
               </div>
@@ -361,8 +369,9 @@ const LandingPage = () => {
       </section>
 
       {/* CTA Section */}
-      <section className="bg-gradient-warm py-20">
-        <div className="max-w-4xl mx-auto text-center px-4 sm:px-6 lg:px-8">
+      <section className="bg-gradient-to-br from-orange-100 to-teal-100 py-20 relative">
+        <div className="absolute inset-0 bg-white opacity-60"></div>
+        <div className="max-w-4xl mx-auto text-center px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="card-elevated p-12">
             <h2 className="text-3xl sm:text-4xl font-display font-bold text-neutral-dark mb-6">
               Ready to Change a Life?
@@ -376,7 +385,7 @@ const LandingPage = () => {
                 to="/register"
                 className="btn btn-primary btn-lg shadow-xl transform hover:scale-105 transition-all duration-300"
               >
-                <CheckCircleIcon className="h-5 w-5 mr-2" />
+                <FaCheckCircle className="h-5 w-5 mr-2" />
                 Start Sponsoring Now
               </Link>
               <Link
@@ -391,14 +400,14 @@ const LandingPage = () => {
       </section>
 
       {/* Footer */}
-      <footer className="bg-neutral-800">
+      <footer className="bg-gradient-to-br from-gray-900 to-black">
         <div className="max-w-7xl mx-auto py-16 px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
             {/* Brand */}
             <div className="md:col-span-2">
               <div className="flex items-center mb-6">
                 <div className="bg-gradient-primary w-10 h-10 rounded-xl flex items-center justify-center">
-                  <HeartIcon className="h-6 w-6 text-white" />
+                  <FaHeart className="h-6 w-6 text-white" />
                 </div>
                 <span className="ml-3 text-xl font-display font-bold text-white">
                   Helping Hands
@@ -410,13 +419,13 @@ const LandingPage = () => {
               </p>
               <div className="mt-6 flex space-x-4">
                 <div className="w-8 h-8 bg-primary rounded-full flex items-center justify-center cursor-pointer hover:bg-primary-600 transition-colors">
-                  <span className="text-white text-sm font-semibold">f</span>
+                  <FaFacebookF className="text-white text-sm" />
                 </div>
                 <div className="w-8 h-8 bg-secondary rounded-full flex items-center justify-center cursor-pointer hover:bg-secondary-600 transition-colors">
-                  <span className="text-white text-sm font-semibold">t</span>
+                  <FaTwitter className="text-white text-sm" />
                 </div>
                 <div className="w-8 h-8 bg-accent rounded-full flex items-center justify-center cursor-pointer hover:bg-accent-600 transition-colors">
-                  <span className="text-white text-sm font-semibold">in</span>
+                  <FaLinkedinIn className="text-white text-sm" />
                 </div>
               </div>
             </div>

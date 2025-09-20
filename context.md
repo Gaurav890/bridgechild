@@ -15,7 +15,7 @@ A web application that safely connects sponsors with children (directly or via N
 - Complete user profile management system (Sponsor, NGO, Child profiles)
 - PostgreSQL database with migrations and seed data working
 - All API endpoints functional and tested
-- Server running on localhost:3002
+- Server running on localhost:3003
 - Test credentials working: sponsor@test.com / Test123!
 
 ## Frontend Status: 🔄 UI/UX REDESIGN IN PROGRESS
@@ -27,7 +27,7 @@ A web application that safely connects sponsors with children (directly or via N
 ✅ **Modern Components**: Card layouts, hover effects, gradients, smooth transitions
 ✅ **Authentication Flow**: Login/register forms with consistent styling
 ✅ **Responsive Design**: Mobile-friendly layouts across all pages
-✅ **Technical Integration**: Frontend (localhost:3000) and backend (localhost:3002) running
+✅ **Technical Integration**: Frontend (localhost:3000) and backend (localhost:3003) running
 ✅ **End-to-end Testing**: Login flow verified working
 
 ### FILES UPDATED IN FIRST UI/UX ITERATION:
@@ -102,7 +102,7 @@ bridgechild/
 - **Admin**: System oversight, fraud detection, audit logs, user management
 
 # Development Environment Status
-- **Backend Server**: Running on localhost:3002 ✅
+- **Backend Server**: Running on localhost:3003 ✅
 - **Frontend Server**: Running on localhost:3000 ✅
 - **Database**: PostgreSQL connected and migrated ✅
 - **Authentication**: Working with test credentials ✅
@@ -119,29 +119,10 @@ bridgechild/
 - **Profiles**: 13 endpoints (/api/profiles/*)
 - **Total**: 26 production-ready API endpoints
 
-# Current Development Priority
-
-## ❗ URGENT TASK: UI/UX REDESIGN & IMPROVEMENT
-The current UI/UX implementation has been identified as unacceptable and requires significant improvement.
-
-### Issues to Address:
-1. **Visual Design**: Current design may not be visually appealing enough
-2. **User Experience**: Navigation and user flows need improvement
-3. **Professional Polish**: Interface needs more professional appearance
-4. **Social Cause Branding**: Better alignment with social cause mission
-5. **Responsiveness**: Ensure excellent mobile experience
-6. **Accessibility**: Improve accessibility standards
-7. **Performance**: Optimize for better loading and interactions
+]
 
 ### Next Steps:
-1. Analyze current UI/UX shortcomings in detail
-2. Research modern social cause website designs for inspiration
-3. Create an improved design system and component library
-4. Implement enhanced landing page with stronger visual impact
-5. Redesign all dashboard interfaces with better UX
-6. Improve form designs and user interactions
-7. Add better loading states, animations, and feedback
-8. Test thoroughly across devices and browsers
+1. The icons in sign in and sign up forms in input fields are touching the borders of input filds. Please add some padding so they are not touching the borders.
 
 # Development Commands
 ```bash
@@ -149,14 +130,14 @@ The current UI/UX implementation has been identified as unacceptable and require
 cd /home/crokx/capstone/bridgechild/
 
 # Backend (already running)
-cd backend && DB_HOST=localhost PORT=3002 npm start
+cd backend && DB_HOST=localhost PORT=3003 npm run dev
 
 # Frontend (already running)
 cd frontend && npm start
 
 # Visit application
 # Frontend: http://localhost:3000
-# Backend API: http://localhost:3002/api
+# Backend API: http://localhost:3003/api
 ```
 
 # Security Implementation
@@ -166,5 +147,3 @@ cd frontend && npm start
 - File Security: Type validation, size limits, virus scanning
 - PII Protection: Automatic redaction in communications
 - Child Safety: No direct unmoderated contact, NGO oversight required
-
-The project is technically sound with a fully functional backend and basic frontend, but requires significant UI/UX improvement to meet professional standards for a social cause platform.

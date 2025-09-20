@@ -46,12 +46,22 @@ export const confirmPassword = (message = 'Passwords do not match') => (value, a
   return '';
 };
 
-export const strongPassword = (message = 'Password must contain at least 8 characters, including uppercase, lowercase, number, and special character') => (value) => {
+export const strongPassword = (message = 'Password must be at least 8 characters with at least one letter and one number') => (value) => {
   if (!value) return '';
-  const strongPasswordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
-  if (!strongPasswordRegex.test(value)) {
-    return message;
+
+  // Check minimum length
+  if (value.length < 8) {
+    return 'Password must be at least 8 characters long';
   }
+
+  // Check for at least one letter and one number
+  const hasLetter = /[a-zA-Z]/.test(value);
+  const hasNumber = /\d/.test(value);
+
+  if (!hasLetter || !hasNumber) {
+    return 'Password must contain at least one letter and one number';
+  }
+
   return '';
 };
 

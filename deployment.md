@@ -202,7 +202,7 @@ docker-compose exec backend npm run seed
 
 ### Application URLs
 - **Frontend**: http://localhost:3000
-- **Backend API**: http://localhost:3001
+- **Backend API**: http://localhost:3003
 - **Database Admin** (optional): http://localhost:5050 (if pgAdmin is enabled)
 
 ### Test the Installation
